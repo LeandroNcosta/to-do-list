@@ -7,7 +7,7 @@
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-Acesse">Acesse</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-Acesse online">Acesse</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
 <br>
@@ -19,11 +19,15 @@
 
 ## 🚀 Tecnologias
 
+
 - HTML e SCSS
 - JavaScript
 
 
 ## 💻 Projeto
+
+
+Este projeto foi desenvolvido com as seguintes tecnologias:
 
 - [x] Adicionar itens
 - [x] Remover itens
@@ -32,9 +36,13 @@
 - [x] Modo escuro e claro
 
 
-## Acesse
+## Acesse online
 
 - [Acesse o projeto finalizado, ONLINE na Netlify](https://to-do-llist.netlify.app/)
+
+
+
+
 
 
 
