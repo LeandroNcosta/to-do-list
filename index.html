@@ -1,0 +1,85 @@
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous" />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+            crossorigin="anonymous" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="./css/main.min.css" />
+        <title>To-do List</title>
+    </head>
+    <body class="bg-dark">
+        <div class="loading"></div>
+
+        <div class="switch">
+            <button></button>
+            <span></span>
+        </div>
+        <main class="container">
+            <header class="text-center text-light my-4">
+                <h1 class="mb-4">To-do List</h1>
+                <form class="form-search">
+                    <input
+                        class="form-control m-auto"
+                        type="text"
+                        name="search"
+                        placeholder="Buscar to-do"
+                        autofocus
+                        autocomplete="off" />
+                </form>
+            </header>
+
+            <ul class="todos-container list-group mx-auto text-light">
+                <!-- <li
+                    data-todo="Assistir Breaking Bad"
+                    class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>Assistir Breaking Bad</span>
+                    <i
+                        class="far fa-trash-alt delete"
+                        data-trash="Assistir Breaking Bad">
+                    </i>
+                </li> -->
+            </ul>
+
+            <form class="form-add-todo text-center my-4">
+                <label>Adicionar to-do</label>
+                <input
+                    class="form-control m-auto"
+                    type="text"
+                    name="add"
+                    maxlength="100"
+                    required />
+                <br />
+
+                <button class="btn-add form-control m-auto">Adicionar</button>
+            </form>
+
+            <div class="container-update-item">
+                <div class="container-input">
+                    <label for="new-title">Tarefa</label>
+                    <input type="text" name="new-title" class="new-title" />
+                </div>
+                <div>
+                    <button class="cancel">Cancelar</button>
+                    <button class="update">Atualizar</button>
+                </div>
+            </div>
+        </main>
+        <button class="hide-todo-btn"></button>
+
+        <script type="module" src="./src/js/app.js"></script>
+    </body>
+</html>

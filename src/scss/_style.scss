@@ -1,0 +1,410 @@
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.loading {
+    height: 10rem;
+    width: 10rem;
+    top: calc(50% - 5rem);
+    left: calc(50% - 5rem);
+    position: absolute;
+    border: 15px solid rgb(124, 122, 122);
+    border-top-color: rgb(131, 6, 6);
+    border-radius: 50%;
+    animation: is-loading 1s infinite;
+}
+
+// Button toggle theme
+.switch {
+    position: absolute;
+    top: -3rem;
+    right: 1rem;
+    width: 64px;
+    button {
+        width: 32px;
+        height: 32px;
+        background: #fff url("../../assets/sun.svg") no-repeat center;
+        border: 0;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 1;
+        transform: translateY(-50%);
+
+        animation: slide-back 0.2s;
+        &:hover {
+            outline: 8px solid rgba(0, 0, 0, 0.1);
+        }
+    }
+    span {
+        display: block;
+        width: 64px;
+        height: 24px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 9999px;
+    }
+}
+
+// Main
+.container {
+    opacity: 0;
+
+    margin-top: 5rem;
+    max-width: 400px;
+    transition: opacity 0.9s ease;
+    input[type="text"],
+    &:focus {
+        color: #fff;
+        border: none;
+        background: rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+    }
+    .todos-container {
+        max-height: 300px;
+        transition: max-height 0.9s ease;
+        overflow: auto;
+        overflow-x: hidden;
+        li.list-group-item {
+            position: static;
+            background: #484e53;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 200ms ease-in;
+            span {
+                width: 80%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                font-weight: 300;
+            }
+            div.btns {
+                .delete {
+                    cursor: pointer;
+                    transition: 200ms;
+                    margin-left: 1rem;
+                    &:hover {
+                        color: #961212;
+                    }
+                }
+                .edit {
+                    position: relative;
+                    opacity: 0;
+                    cursor: pointer;
+                    transition: 200ms;
+                    transition: all 0.6s ease;
+                    &:hover {
+                        color: #000;
+                    }
+                    /* .edit::after  */
+                    &::after {
+                        content: "Editar";
+                        transition: all 0.6s ease;
+                        opacity: 0;
+                        font-weight: bolder;
+                        text-shadow: 2px 2px 4px #000;
+                        letter-spacing: 0.1rem;
+                        background: rgba(0, 0, 0, 0.5);
+                        border-radius: 3rem 3rem 3rem 3rem;
+                        color: #fff;
+                        font-size: 0.4rem;
+                        padding: 0.5rem;
+                        position: absolute;
+                        z-index: 10;
+                        top: 1.7rem;
+                        left: -1.8rem;
+                    }
+                    /*  .edit:hover::after */
+                    &:hover::after {
+                        opacity: 1;
+                    }
+                }
+            }
+            mark {
+                background: rgba(255, 255, 255, 0.2);
+                color: #fff;
+                padding: 0;
+            }
+            &:hover {
+                background: rgba(0, 0, 0, 0.2);
+                div.btns {
+                    .edit {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        .hidden {
+            display: none;
+        }
+        .search-feedback {
+            text-align: center;
+            color: #808080;
+        }
+    }
+    form {
+        transition: transform 0.5s ease;
+        label {
+            color: #ffffff4d;
+        }
+        .btn-add {
+            border: 0;
+            background: #484e53;
+            color: #fff;
+            transition: all 300ms ease-in;
+            box-shadow: 0px 1px 2px 1px #3c4043;
+            &:hover {
+                background: rgba(255, 255, 255, 0.6);
+                color: #000;
+            }
+        }
+    }
+    .container-update-item {
+        display: none;
+        position: absolute;
+        width: 300px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #343a40;
+        border-radius: 0.5rem;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.5);
+        .container-input {
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 80%;
+            label {
+                color: #808080;
+                font-size: 0.8rem;
+            }
+            input {
+                padding: 2px 10px 5px;
+                background: transparent;
+                border: 1px solid #808080;
+                border-radius: 0.3rem;
+                color: #fff;
+                &:focus {
+                    outline: 2px solid #1a73e8;
+                }
+            }
+        }
+        div {
+            margin: 2rem 3rem 1rem 1rem;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            button {
+                width: 5rem;
+                border-radius: 8px;
+                font-size: 14px;
+                line-height: 30px;
+                outline: 0;
+                border: 0;
+                cursor: pointer;
+                background: transparent;
+                color: #808080;
+                transition: all 0.7s ease;
+                &:hover {
+                    background: rgba(179, 174, 174, 0.5);
+                    color: #fff;
+                }
+            }
+            .update {
+                background: rgba(255, 90, 87, 0.3);
+                color: rgba(255, 255, 255, 0.7);
+                margin-left: 0.8rem;
+                &:hover {
+                    background: #1863c5;
+                }
+            }
+        }
+    }
+    .container-update-item.open {
+        display: flex;
+        position: absolute;
+        bottom: 50%;
+        z-index: 200;
+        -webkit-animation: scale-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation: scale-in 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        &::before {
+            content: "";
+            width: 100vw;
+            height: 90vh;
+            background: transparent;
+            position: absolute;
+            z-index: -1;
+        }
+    }
+}
+
+// button open-closed to-do-List
+.hide-todo-btn {
+    opacity: 0;
+
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    position: absolute;
+    right: 49%;
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1);
+    transition: all 0.6s ease;
+    animation: 0;
+    background: rgba(255, 90, 87, 0.3);
+    transform: rotate(135deg);
+    color: #fff;
+    // transform: translateX(50%);
+    &:focus {
+        outline: 0;
+    }
+    &::before {
+        content: "✚";
+        font-weight: bolder;
+        font-size: 1rem;
+        transition: all 0.6s ease;
+    }
+    &:hover {
+        &::before {
+            color: #000;
+        }
+    }
+}
+
+// closed container to-do-list
+.container.closed-to-do-list {
+    opacity: 0;
+    .todos-container {
+        max-height: 0px;
+        transition: max-height 0.9s ease;
+    }
+    form {
+        transform: scale(0);
+    }
+}
+
+body.closed-to-do-list button.hide-todo-btn {
+    animation: floating 5s infinite 7s ease-in-out;
+    background: #fff;
+    transform: rotate(0);
+    transition: all 0.6s ease;
+    &::before {
+        color: #000;
+        transition: all 0.6s ease;
+    }
+    &:hover {
+        background: #000;
+        &::before {
+            color: #fff;
+        }
+    }
+}
+
+// SCROLLS
+.todos-container::-webkit-scrollbar {
+    // width: 5px;
+    height: 5px;
+}
+
+.todos-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+}
+
+.todos-container::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+// Keyframes-animations
+@keyframes is-loading {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes scale-in {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes floating {
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    0% {
+        opacity: 0;
+        transform: scale(0);
+        transform: rotate(180deg);
+    }
+}
+
+// LIGHT MODE / LIGHT = HTML
+.light {
+    color: black;
+    background-color: #75656533;
+    body {
+        background-color: #d0c9c933;
+    }
+    .switch {
+        span {
+            border: 1px solid gray;
+            background: rgba(51, 50, 50, 0.5);
+        }
+        button {
+            animation: slide-in 0.2s forwards;
+            background: #fff url("../../assets/moon-stars.svg") no-repeat center;
+            border: 2px solid rgba(93, 92, 92, 0.5);
+        }
+    }
+    h1 {
+        color: #000;
+    }
+    form {
+        label {
+            color: #000;
+        }
+    }
+    input[type="text"] {
+        color: #000;
+        &:focus {
+            color: #000;
+        }
+    }
+    .container-update-item.open {
+        input.new-title {
+            color: #fff;
+        }
+    }
+}
